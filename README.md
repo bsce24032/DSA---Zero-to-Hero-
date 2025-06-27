@@ -26,7 +26,79 @@ Welcome to my 30-day CP journey! This repository documents my daily practice, le
 ---
 
 ### ✅ Day-by-Day Progress
-(Coming soon – or add as markdown table)
+
+### 🔹 LeetCode 136 - Single Number  
+[Problem Link](https://leetcode.com/problems/single-number/)  
+```java
+class Solution {
+    public int singleNumber(int[] nums) {
+        int res = 0;
+        for (int num : nums) {
+            res ^= num;
+        }
+        return res;
+    }
+}
+### 🔹 LeetCode 485 - Max Consecutive Ones
+class Solution {
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int count=0; int prevCount=0;
+        for(int num :nums){
+            if(num==1){
+                count=count+1;
+                if(count>prevCount){
+                    prevCount=count;
+                }
+            }else {
+                count=0;
+            }
+        }
+        return prevCount;
+    }
+}
+
+### 🔹 LeetCode 344. Reverse String
+class Solution {
+    public void reverseString(char[] s) {
+        int start=0; int end = s.length-1;
+        while(start<end){
+            char temp = s[start];
+            s[start]= s[end];
+            s[end]=temp;
+            start++;
+            end--;
+        }
+    }
+}
+
+
+### 🔹 LeetCode 557. Reverse Words in a String III
+class Solution {
+    public String reverseWords(String s) {
+        String[] words = s.split(" ");
+        StringBuilder result = new StringBuilder();
+
+        for (String word : words) {
+            StringBuilder reversed = new StringBuilder(word);
+            result.append(reversed.reverse().toString()).append(" ");
+        }
+
+        // Remove the trailing space
+        return result.toString().trim();
+    }
+}
+
+### 🔹 LeetCode 169. Majority Element
+class Solution {
+    public int majorityElement(int[] nums) {
+    Arrays.sort(nums);
+    return nums[nums.length / 2];
+        }
+    }
+
+
+
+
 
 ---
 
