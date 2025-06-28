@@ -96,7 +96,109 @@ class Solution {
         }
     }
 
+### 🔹 LeetCode 704. Binary Search
+class Solution {
+    public int search(int[] nums, int target) {
+       int start = 0; int end=nums.length-1; int mid;
+        while(start<=end){
+            mid=(start+end)/2;
+            if(target==nums[mid]){
+                return mid;
+            }
+            else if(target>nums[mid]){
+                start=mid+1;
+            }
+            else{
+                end=mid-1;
+            }
+        }
+         return -1;
+    }
+}
 
+
+### 🔹 LeetCode 53. Maximum Sub-Array
+class Solution {
+    public int maxSubArray(int[] nums) {
+     int max = nums[0];
+     int curr = nums[0];
+        for(int i=1 ; i<nums.length ; i++){
+            curr = Math.max(nums[i],curr + nums[i]);
+            max= Math.max(curr,max);
+        }
+        return max;
+    }
+}
+
+
+### 🔹 LeetCode 42. Traping Rain water
+class Solution {
+    public int trap(int[] height) {
+        int n = height.length;
+    int leftmax[]=new int [n];
+        leftmax[0]=height[0];
+        for(int i =1 ; i<n ; i++){
+            leftmax[i]=Math.max(height[i],leftmax[i-1]);
+        }
+    int rightmax[]=new int [n];
+        rightmax[n-1]=height[n-1];
+        for(int i = n-2 ; i>=0 ; i--){
+            rightmax[i]= Math.max(height[i],rightmax[i+1]);
+        }
+    int trapwater=0;
+        for(int i=0 ; i<n; i++){
+            trapwater+=Math.min(leftmax[i],rightmax[i])-height[i];
+        }
+        return trapwater;
+    }
+}
+
+
+ ### 🔹 LeetCode 33. Search in Rotated Sorted Array
+class Solution {
+    public int search(int[] nums, int target) {
+    int start =0; int end = nums.length-1;
+        while(start<=end){
+            int mid = (start+end)/2;
+            if(nums[mid] == target){
+                return mid;
+            }
+            if(nums[start]<=nums[mid]){
+                if(nums[start]<=target && target<nums[mid]){
+                    end = mid-1; }
+                else {
+                    start=mid+1;
+                }
+            }
+            else{
+                if(target>nums[mid] && target<=nums[end]){
+                    start= mid+1;
+                }else{
+                    end=mid-1;
+                }
+            }
+            
+        }
+        return -1;
+    }
+}
+
+ ### 🔹 LeetCode 1. Two Sum
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        
+                for (int i = 0; i < nums.length; i++) {
+            int curr = nums[i];
+            for (int j = i + 1; j < nums.length; j++) {
+                if(curr +  nums[j] == target ){
+                    return new int [] {i,j};
+                }
+            }
+        }
+        return new int [] {};
+    }
+}
 
 
 
