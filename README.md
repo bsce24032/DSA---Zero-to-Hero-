@@ -248,6 +248,40 @@ class Solution {
 }
 
 
+
+## leetcode 918. Maximum Sum Circular Subarray
+
+class Solution {
+    public int maxSubarraySumCircular(int[] nums) {
+              // in kadanes algo algo always initialize with nums[0]
+   int max_sum=nums[0];
+   int curr_max=nums[0];
+    int min_sum=nums[0];
+   int curr_min=nums[0];
+    int total_sum=nums[0];
+  // loop till length-1 from 1 beacuse we have 0 index value 
+        for(int i=1 ; i<nums.length ; i++){
+            // simple kadane for maximum subArray
+            curr_max= Math.max(nums[i],curr_max+nums[i]);
+            max_sum=Math.max(curr_max,max_sum);
+            // simple minimum subArray kdane 
+            curr_min = Math.min(nums[i],curr_min+nums[i]);
+            min_sum = Math.min(min_sum,curr_min);
+            // calculating totalsum from index 1 - end
+            total_sum+=nums[i];
+        }
+        // If all numbers are negative, max_sum will be the least negative number.
+        // In that case, total_sum == min_sum, so total_sum - min_sum = 0 (invalid).
+        // So return max_sum directly.
+        if(max_sum<0){
+            return max_sum;
+        }
+        // 
+        return Math.max(max_sum,total_sum-min_sum);
+}
+}
+
+
 ---
 
 Stay tuned for daily updates, optimizations, and notes!
