@@ -200,6 +200,52 @@ class Solution {
     }
 }
 
+## LeetCode 26. Remove Duplicates from Sorted Array
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        int i =0;
+        for(int j =1 ; j<nums.length ; j++){
+            if(nums[j]!=nums[i]){
+                i++;
+                nums[i]=nums[j];
+            }
+        }
+        return i+1;
+    }
+}
+
+
+
+## leetcode 27. Remove Element
+
+class Solution {
+    public int removeElement(int[] nums, int val) {
+    int nonval=0;
+        for(int i=0 ; i<nums.length ; i++){
+            if(nums[i]!=val){
+                nums[nonval]=nums[i];
+                nonval++;
+            }
+        }
+        return nonval;
+    }
+}
+
+
+
+## leetcode 217. Contains Duplicate
+
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+         Arrays.sort(nums);
+        for(int i=0 ; i<nums.length-1 ; i++){
+            if(nums[i]==nums[i+1]){
+                return true;
+            }
+        }
+        return false;
+    }
+}
 
 
 ---
