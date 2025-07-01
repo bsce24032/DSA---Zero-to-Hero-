@@ -46,7 +46,9 @@ public class part2 {
         int curr = arr[0];
         int max = arr[0];
         for (int i = 1; i < arr.length; i++) {
+            // if current sum is negative reset it 
             curr = Math.max(arr[i],curr+arr[i]);
+            // if current sub array is postive and greter than max update it 
             max = Math.max(curr,max);
         }
         return max;
