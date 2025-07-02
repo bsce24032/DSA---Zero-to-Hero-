@@ -282,6 +282,47 @@ class Solution {
 }
 
 
+## leetcode  54.  Spiral Matrix
+
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+        int startrow=0;
+        int startcol=0;
+        int endrow=matrix.length-1;
+        int endcol=matrix[0].length-1;
+        ArrayList<Integer> list = new ArrayList<>();
+        while(startrow<=endrow && startcol<=endcol){
+             //top
+        for(int i =startrow ; i <= endcol ; i++){
+            list.add(matrix[startrow][i]);
+        }
+        //rigth
+        for(int i=startrow+1 ; i<= endrow ;i++){
+            list.add(matrix[i][endcol]);
+        }
+        //down
+        for(int i = endcol-1 ; i>= startcol ; i--){
+            if(startrow==endrow){
+                break;
+            }
+            list.add(matrix[endrow][i]);
+        }
+        //left
+        for(int i = endrow-1 ; i>startrow ; i--){
+            if(startcol==endcol){
+                break;
+            }
+            list.add(matrix[i][startcol]);
+        }
+            startrow++;
+            endrow--;
+            startcol++;
+            endcol--;
+        }
+       return list;
+    }
+}
+
 ---
 
 Stay tuned for daily updates, optimizations, and notes!
