@@ -18,7 +18,7 @@ Welcome to my 30-day CP journey! This repository documents my daily practice, le
 - ✅ Clean Java code
 - 📘 PDF notes for each topic
 - 🧠 Dry-run explanations
-- 📈 Progress toward solving 300+ problems
+- 📈 Progress toward solving 100+ problems
 
 ## 📅 Challenge Goal
 > 300+ CP problems in 30 days across LeetCode and Codeforces 💪
@@ -361,6 +361,59 @@ class Solution {
         return maxprofit;
     }
 }
+
+#leetcode 867. Transpose Matrix
+
+class Solution {
+    public int[][] transpose(int[][] matrix) {
+        int[][] transpose = new int[matrix[0].length][matrix.length];
+        for(int i=0 ; i<matrix.length ; i++){
+            for(int j=0 ; j<matrix[0].length ; j++ ){
+                transpose[j][i]=matrix[i][j];
+            }
+        }
+        return transpose;
+    }
+}
+
+
+
+##leetcode 240. Search a 2D Matrix II
+
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+       int row  = 0; //rows   
+        int col = matrix[0].length-1; //cols
+        while(row<matrix.length&& col>=0){ //row<endrow and col>=0
+            if(matrix[row][col]==target){
+                return true; //found true
+            }
+            else if (target<matrix[row][col]){
+                col--; // staircase search then move toward left
+            }
+            else{
+                row++; // staircase search move toward bottom
+            }
+        }
+        return false;
+    }
+}
+
+
+#leetcode 125. Valid Palindrome
+
+class Solution {
+    public boolean isPalindrome(String s) {
+        s=s.replaceAll("[^a-zA-Z0-9]","").toLowerCase();
+        for(int i =0 ; i<s.length()/2 ; i++){
+            if(s.charAt(i)!=s.charAt(s.length()-i-1)){
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
 
 ---
 
