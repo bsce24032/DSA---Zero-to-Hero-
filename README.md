@@ -323,6 +323,45 @@ class Solution {
     }
 }
 
+
+
+## leetcode 1572. Matrix Diagonal Sum
+
+class Solution {
+    public int diagonalSum(int[][] mat) {
+        int sum=0;
+        for( int i =0 ; i<mat.length ; i++){
+            //primary diagonal
+            sum+=mat[i][i];
+            //secondary diagonal
+            if(i!=mat.length-i-1){ // secondary diagonal where i!=j
+                sum+=mat[i][mat.length-i-1];
+            }
+        }
+        return sum;
+    }
+}
+
+
+
+## leetcode 121. Best Time to Buy and Sell Stock
+
+class Solution {
+    public int maxProfit(int[] prices) {
+        int buy=Integer.MAX_VALUE;
+        int maxprofit=0;
+        for(int i=0 ; i<prices.length ; i++){
+            if(buy<prices[i]){
+                maxprofit=Math.max(maxprofit,prices[i]-buy);
+            }
+            else {
+                buy=prices[i];
+            }
+        }
+        return maxprofit;
+    }
+}
+
 ---
 
 Stay tuned for daily updates, optimizations, and notes!
