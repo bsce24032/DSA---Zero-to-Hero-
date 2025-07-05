@@ -463,6 +463,85 @@ class Solution {
 }
 
 
+
+##leetcode 231. Power of Two
+
+class Solution {
+    public boolean isPowerOfTwo(int n) {
+      return n>0 && (n&(n-1))==0;
+    }
+}
+
+
+
+
+#leetcode 136. Single Number
+
+class Solution {
+    public int singleNumber(int[] nums) {
+        int res=0;
+         for(int num:nums){
+             res=res^num;
+         }
+    return res;
+    }
+}
+
+
+#leetcode 476. Number Complement
+
+class Solution {
+    public int findComplement(int num) {
+         return num = (Integer.highestOneBit(num)*2-1)&(~num);
+    }
+}
+
+#leetcode 1009. Complement of Base 10 Integer
+
+class Solution {
+    public int bitwiseComplement(int num) {
+        if (num == 0) return 1;  // Special case
+        int mask = Integer.highestOneBit(num) * 2 - 1;
+        return ~num & mask;
+    }
+}
+
+
+
+#leetcode 14. Longest Common Prefix
+
+class Solution {
+    public String longestCommonPrefix(String[] strs) {
+           String prefix =  strs[0];
+         for(int i=1 ; i<strs.length ; i++){
+             while(!strs[i].startsWith(prefix)){
+                 prefix = prefix.substring(0,prefix.length()-1);
+                 if(prefix.length()==0){
+                     return "";
+                 }
+             }
+         }
+        return prefix;
+    }
+}
+
+
+
+#leetcode 283. Move Zeroes
+
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int order=0;
+        for ( int i=0 ; i<nums.length ; i++){
+           if(nums[i]!=0){
+               nums[order++]=nums[i];
+           }
+        }
+        while(order<nums.length){
+            nums[order++]=0;
+        }
+    }
+}
 ---
 
 Stay tuned for daily updates, optimizations, and notes!
