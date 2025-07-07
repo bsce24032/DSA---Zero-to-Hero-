@@ -542,6 +542,97 @@ class Solution {
         }
     }
 }
+
+
+#leetcode 1394. Find Lucky Integer in an Array
+
+class Solution {
+    public int findLucky(int[] arr) {
+      int lucky = 0;
+      int finalcount=0;
+      int currcount=0;
+      int currlucky=0;
+        for(int i =0 ; i<arr.length ; i++){
+            for(int j =0 ; j<arr.length ; j++){
+                if(arr[i]==arr[j]){
+                    currcount++;
+                }
+            }
+            if(currcount>finalcount && currcount == arr[i]){
+                 currlucky=arr[i];
+                if(currlucky>lucky){
+                    lucky=currlucky;
+                } 
+            }
+            currcount=0;
+        }
+        if(lucky==0){
+            return -1;
+        }
+        return lucky;
+    }
+}
+
+
+#leetcode 35. Search Insert Position
+
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+         int start=0; int end=nums.length-1;
+        int mid=0;
+        while(start<=end){
+            mid=(start+end)/2;
+            if(nums[mid]==target){
+                return mid;
+            }
+            else if(target>nums[mid]){
+                start=mid+1;
+            }
+            else{
+                end = mid-1;
+            }
+        }
+        return start;
+    }
+}
+
+
+
+#leetcode 66. Plus One
+class Solution {
+    public int[] plusOne(int[] digits) {
+      int carry =1; int sum =0;
+      for(int i =digits.length-1 ; i>=0 ; i--){
+          sum=digits[i]+carry;
+          digits[i]=sum%10;
+          carry=sum/10;
+      }
+      if(carry==0) return digits;
+      int [] result = new int[digits.length+1];
+        result[0]=carry;
+    for(int i =0 ; i<digits.length ; i++){
+        result[i+1]=digits[i];
+    }
+        return result;
+    }
+}
+
+
+#leetcode 303. Range Sum Query - Immutable
+
+class NumArray {
+     private int[] prefix;
+    public NumArray(int[] nums) {
+     prefix = new int[nums.length+1];
+    for(int i =0 ; i<nums.length ; i++){
+        prefix[i+1]=prefix[i]+nums[i];
+    }
+    }
+    
+    public int sumRange(int left, int right) {
+        return prefix[right+1]-prefix[left];
+    }
+}
 ---
 
 Stay tuned for daily updates, optimizations, and notes!
